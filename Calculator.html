@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <h2>
+      <marquee
+        behavior=""
+        direction="right"
+        class="text-warning font-weight-bold font-size-lg mt-4"
+        >Basic Calculator</marquee
+      >
+    </h2>
+
+    <div class="d-flex justify-content-center gap-3 mt-3">
+      <button type="button" class="btn btn-primary" onclick="calculate('add')">
+        Addition
+      </button>
+      <button type="button" class="btn btn-primary" onclick="calculate('sub')">
+        Subtraction
+      </button>
+      <button type="button" class="btn btn-primary" onclick="calculate('mul')">
+        Multiplication
+      </button>
+      <button type="button" class="btn btn-primary" onclick="calculate('div')">
+        Division
+      </button>
+      <button type="button" class="btn btn-primary" onclick="calculate('mod')">
+        Mod
+      </button>
+    </div>
+
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="First_Number" class="mb-2">Enter 1st No.</label>
+            <input
+              type="number"
+              class="form-control mx-auto"
+              id="First_Number"
+              placeholder="First Number"
+            />
+          </div>
+          <div class="form-group mt-3">
+            <label for="Second_Number" class="mb-2">Enter 2nd No.</label>
+            <input
+              type="number"
+              class="form-control mx-auto"
+              id="Second_Number"
+              placeholder="Second Number"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row d-flex justify-content-center mt-4">
+      <label for="Operation" class="col-sm-1 col-form-label">Operation</label>
+      <div class="col-sm-3">
+        <input
+          type="text"
+          readonly
+          class="form-control"
+          id="Operation"
+          placeholder="Operation"
+          readonly
+        />
+      </div>
+      <label for="Answer" class="col-sm-1 col-form-label">Answer</label>
+      <div class="col-sm-3">
+        <input
+          type="text"
+          readonly
+          class="form-control"
+          id="Answer"
+          placeholder="Answer"
+          readonly
+        />
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function calculate(operation) {
+        let num1 = parseFloat(document.getElementById("First_Number").value)
+        let num2 = parseFloat(document.getElementById("Second_Number").value)
+        let result
+        let opSymbol
+
+        if (isNaN(num1) || isNaN(num2)) {
+          alert("Please enter valid numbers.")
+          return
+        }
+
+        switch (operation) {
+          case "add":
+            result = num1 + num2
+            opSymbol = "Addition(+)"
+            break
+          case "sub":
+            result = num1 - num2
+            opSymbol = "Subtraction(-)"
+            break
+          case "mul":
+            result = num1 * num2
+            opSymbol = "Multiplication(×)"
+            break
+          case "div":
+            if (num2 === 0) {
+              alert("Cannot divide by zero!")
+              return
+            }
+            result = num1 / num2
+            opSymbol = "Division(÷)"
+            break
+          case "mod":
+            result = num1 % num2
+            opSymbol = "Mod(%)"
+            break
+          default:
+            return
+        }
+
+        document.getElementById("Operation").value = opSymbol
+        document.getElementById("Answer").value = result
+      }
+    </script>
+  </body>
+</html>

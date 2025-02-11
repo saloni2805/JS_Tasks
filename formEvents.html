@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+    make a form which will take values name, address, email, contact and add effect to labels
+    -->
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        background-color: aliceblue;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        max-width: 600px;
+        margin: auto;
+      "
+    >
+      <form onsubmit="createTable(event)" action="">
+        <label for="name" style="display: none; margin-top: 10px" id="labelname"
+          >Name:</label
+        >
+        <input
+          onselect="Select()"
+          onfocus="labelNameFocus()"
+          onblur="labelNameBlur()"
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter your name"
+          style="
+            margin-top: 10px;
+            width: 300px;
+            background-color: #f2f2f2;
+            display: block;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px;
+          "
+        />
+        <label
+          for="email"
+          style="display: none; margin-top: 10px"
+          id="labelemail"
+          >Email:</label
+        >
+        <input
+          onselect="Select()"
+          onfocus="labelEmailFocus()"
+          onblur="labelEmailBlur()"
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Enter your Email Id"
+          style="
+            display: block;
+            margin-top: 10px;
+            width: 300px;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px;
+          "
+        />
+        <label
+          for="contact"
+          style="display: none; margin-top: 10px"
+          id="labelcontact"
+          >Contact:</label
+        >
+        <input
+          onselect="Select()"
+          onfocus="labelContactFocus()"
+          onblur="labelContactBlur()"
+          type="text"
+          id="contact"
+          name="contact"
+          placeholder="Enter your Contact Number"
+          style="
+            display: block;
+            margin-top: 10px;
+            width: 300px;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px;
+          "
+        />
+        <label
+          for="address"
+          style="display: none; margin-top: 10px"
+          id="labeladdress"
+          >Address:</label
+        >
+        <textarea
+          onselect="Select()"
+          onfocus="labelAddressFocus()"
+          onblur="labelAddressBlur()"
+          type="text"
+          id="address"
+          name="address"
+          placeholder="Enter your address"
+          style="
+            display: block;
+            margin-top: 10px;
+            width: 300px;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px;
+            font-size: 15px;
+          "
+        ></textarea>
+        <input
+          type="submit"
+          value="Submit"
+          style="
+            margin-top: 10px;
+            padding: 8px 12px 8px 12px;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+          "
+        />
+      </form>
+    </div>
+    <div id="table"></div>
+
+    <script>
+      const labelname = document.getElementById("labelname")
+      function labelNameFocus() {
+        labelname.style.display = "block"
+      }
+      function labelNameBlur() {
+        labelname.style.display = "none"
+      }
+
+      const labelemail = document.getElementById("labelemail")
+      function labelEmailFocus() {
+        labelemail.style.display = "block"
+      }
+      function labelEmailBlur() {
+        labelemail.style.display = "none"
+      }
+
+      const labelcontact = document.getElementById("labelcontact")
+      function labelContactFocus() {
+        labelcontact.style.display = "block"
+      }
+      function labelContactBlur() {
+        labelcontact.style.display = "none"
+      }
+
+      const labeladdress = document.getElementById("labeladdress")
+      function labelAddressFocus() {
+        labeladdress.style.display = "block"
+      }
+      function labelAddressBlur() {
+        labeladdress.style.display = "none"
+      }
+
+      function Select() {
+        alert(`Selectting text not allowed !!`)
+      }
+
+      function createTable(event) {
+        event.preventDefault() // Prevent form submission and page reload
+
+        const nameValue = document.getElementById("name").value
+        const emailValue = document.getElementById("email").value
+        const contactValue = document.getElementById("contact").value
+        const addressValue = document.getElementById("address").value
+
+        const table = document.getElementById("table")
+
+        // Create a table with the entered data
+        table.innerHTML = `
+        <table border="1" style="border-collapse: collapse; width: 70%; margin: 20px auto; max-width:600px">
+    
+            <tr>
+                <td style="padding: 10px; background-color: #f2f2f2;">Name</td>
+                <td style="padding: 10px;">${nameValue}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px;  background-color: #f2f2f2;">Email</td>
+                <td style="padding: 10px;">${emailValue}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px;  background-color: #f2f2f2;">Contact</td>
+                <td style="padding: 10px;">${contactValue}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; background-color: #f2f2f2;">Address</td>
+                <td style="padding: 10px;">${addressValue}</td>
+            </tr>
+        </table>
+    `
+      }
+    </script>
+  </body>
+</html>

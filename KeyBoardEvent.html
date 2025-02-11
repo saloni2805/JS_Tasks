@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KeyBoardEvent</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      div {
+        width: 500px;
+        height: 150px;
+        padding: 30px;
+        border: 1px solid black;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: antiquewhite;
+      }
+      div > h1 {
+        text-align: center;
+        margin: 10px;
+      }
+      div > section {
+        text-align: center;
+        margin: 10px;
+      }
+      div > section > label {
+        font-size: 18px;
+      }
+      div > section > input {
+        padding: 7px;
+        margin: 0 0 10px 10px;
+        font-size: 15px;
+      }
+      div > button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 10px;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 id="welcome-text">Welcome, <span id="user-name">Guest</span> !!</h1>
+      <section>
+        <label for="name">Enter Name: </label>
+        <input type="text" title="name" id="name-input" />
+      </section>
+      <button id="reset-btn">Reset</button>
+    </div>
+    <script>
+      const inputField = document.getElementById("name-input")
+      const userName = document.getElementById("user-name")
+      const resetButton = document.getElementById("reset-btn")
+
+      inputField.addEventListener("keyup", () => {
+        const inputName = inputField.value
+        userName.textContent = inputName ? `${inputName}` : "Guest"
+      })
+
+      resetButton.addEventListener("click", () => {
+        inputField.value = ""
+        userName.textContent = "Guest"
+      })
+    </script>
+  </body>
+</html>

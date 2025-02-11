@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="createinfo()">Create User</button>
+    <button onclick="showUsers()">Show Users</button>
+    <button onclick="filterUsers()">Filter Users</button>
+
+    <script>
+      let UserArray = []
+      let Users
+
+      function info(uname, pass) {
+        this.username = uname
+        this.password = pass
+      }
+
+      function createinfo() {
+        username = prompt("Enter username: ")
+        password = prompt("Enter password: ")
+
+        Users = new info(username, password)
+        UserArray.push(Users)
+        alert("User created successfully!")
+      }
+
+      function showUsers() {
+        for (let index = 0; index < UserArray.length; index++) {
+          console.log(
+            `Username: ${UserArray[index].username} \nPassword: ${UserArray[index].password}`
+          )
+        }
+      }
+
+      function filterUsers() {
+        let filter = prompt("Enter username to filter: ")
+        let filteredUsers = UserArray.filter((user) => user.username === filter)
+
+        if (filteredUsers.length > 0) {
+          console.log("Users Found: ")
+          filteredUsers.forEach((user) => {
+            console.log(
+              `Username: ${user.username}, Password: ${user.password}`
+            )
+          })
+        } else {
+          console.log("User not found !!!")
+        }
+      }
+    </script>
+  </body>
+</html>

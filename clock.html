@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+  </head>
+  <body>
+    <h1 id="clock"></h1>
+    <script>
+      console.log("Clock")
+      function clock() {
+        let date = new Date()
+        let hours = date.getHours()
+        console.log("gethrs", hours)
+        let minutes = date.getMinutes()
+        console.log("minuits", minutes)
+        let seconds = date.getSeconds()
+        console.log("Seconds", seconds)
+        let ampm = hours >= 12 ? "PM" : "AM"
+        hours = hours % 12
+        document.getElementById("clock").innerHTML =
+          hours + ":" + minutes + ":" + seconds + " " + ampm
+      }
+      setInterval(clock, 1000)
+    </script>
+  </body>
+</html>

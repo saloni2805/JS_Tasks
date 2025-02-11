@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StopWatch</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="watch" class="d-flex justify-content-center mt-5">
+      <h3>
+        <span id="hours">00</span> : <span id="minuits">00</span> :
+        <span id="seconds">00</span> : <span id="miliseconds">00</span>
+      </h3>
+    </div>
+    <div class="d-flex justify-content-center gap-5 mt-5">
+      <button type="button" class="btn btn-primary" onclick="Start()">
+        Start
+      </button>
+      <button type="button" class="btn btn-primary" onclick="Stop()">
+        Stop
+      </button>
+      <button type="button" class="btn btn-primary" onclick="Reset()">
+        Reset
+      </button>
+    </div>
+
+    <script>
+      var Hours = document.getElementById("hours")
+      var Minuits = document.getElementById("minuits")
+      var Seconds = document.getElementById("seconds")
+      var MiliSeconds = document.getElementById("miliseconds")
+      var timer = 0
+
+      function Start() {
+        timer = setInterval(() => {
+          MiliSeconds.innerHTML = parseInt(MiliSeconds.innerHTML) + 1
+
+          if (parseInt(MiliSeconds.innerHTML) === 100) {
+            MiliSeconds.innerHTML = 0
+            Seconds.innerHTML = parseInt(Seconds.innerHTML) + 1
+          }
+
+          if (parseInt(Seconds.innerHTML) === 60) {
+            Seconds.innerHTML = 0
+            Minuits.innerHTML = parseInt(Minuits.innerHTML) + 1
+          }
+
+          if (parseInt(Minuits.innerHTML) === 60) {
+            Minuits.innerHTML = 0
+            Hours.innerHTML = parseInt(Hours.innerHTML) + 1
+          }
+        }, 10)
+      }
+
+      function Stop() {
+        clearInterval(timer)
+      }
+
+      function Reset() {
+        clearInterval(timer)
+        Hours = 0
+        Minuits = 0
+        Seconds = 0
+        MiliSeconds = 0
+        document.getElementById("hours").innerHTML = Hours
+        document.getElementById("minuits").innerHTML = Minuits
+        document.getElementById("seconds").innerHTML = Seconds
+        document.getElementById("miliseconds").innerHTML = MiliSeconds
+      }
+    </script>
+  </body>
+</html>
