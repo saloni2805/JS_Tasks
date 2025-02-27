@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reduce</title>
+  </head>
+  <body>
+    <script>
+      let User = [
+        { name: "Saloni", lastname: "potdar", age: 28 },
+        { name: "Sayani", lastname: "potdar", age: 32 },
+      ]
+
+      let Reduced = User.reduce((acc, curr) => {
+        console.log(curr.age)
+        if (curr.age < 30) {
+          acc.push(curr.name)
+        }
+        return acc;
+      }, [])
+
+      console.log(Reduced)
+    </script>
+  </body>
+</html>

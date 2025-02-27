@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Higher_Order_Function</title>
+  </head>
+  <body>
+    <script>
+      // Higher Order Function
+      // A function that takes another function as an argument or returns a function as a result
+      // It is a function that can be passed as an argument to another function or can return a
+      // function as a result.
+      // Example of Higher Order Function
+
+      let radius = [2, 4, 6, 7]
+
+      let area = function (radius) {
+        return 3.14 * radius * radius
+      }
+
+      let curcumference = function (radius) {
+        return 2 * Math.PI * radius
+      }
+
+      let calculate = function (radius, formula) {
+        let output = []
+        for (let i = 0; i < radius.length; i++) {
+          output.push(formula(radius[i]))
+        }
+        return output
+      }
+
+      console.log(radius.map(area))
+
+      console.log(calculate(radius, area))
+      console.log(calculate(radius, curcumference))
+    </script>
+  </body>
+</html>
+
+<!-- 
+Output:
+0: 12.56
+1: 50.24
+2: 113.03999999999999
+3: 153.86 
+-->
